@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tablas de Multiplicar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      background-image:
+      url('https://thumbs.dreamstime.com/z/fondo-con-n%C3%BAmeros-el-espacio-de-la-copia-en-un-aislado-blanco-diverso-orden-son-los-diversas-formas-y-colores-centro-140026580.jpg');
+    }
+    h1 {
+      color: #070707;
+    }
+    form {
+      margin-top: 100px;
+      background-color: #fff;
+      padding: 80px;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+    label {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #801352;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #6b1048;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Juego de Tablas de Multiplicar</h1>
+
+<form id="multiplicationGame">
+  <label for="question">¿CuÃ¡nto es 3 x 5?</label>
+  <input type="number" id="answer" name="answer">
+  <button onclick="checkAnswer()">Comprobar</button>
+</form>
+
+<script>
+  var questions = [
+    { question: "¿Cuanto es 3 x 5?", answer: 15 },
+    { question: "¿Cuanto es 7 x 4?", answer: 28 },
+    { question: "¿Cuanto es 8 x 7?", answer: 56 },
+    { question: "¿Cuanto es 7 x 5?", answer: 35 },
+    { question: "¿Cuanto es 3 x 9?", answer: 27 },
+    { question: "¿Cuanto es 9 x 8?", answer: 72 },
+    { question: "¿Cuanto es 3 x 2?", answer: 6 },
+    { question: "¿Cuanto es 6 x 4?", answer: 24 },
+  ];
+
+  var currentQuestion = 0;
+
+  function displayQuestion() {
+    document.getElementById("multiplicationGame").innerHTML = `
+      <label for="question">${questions[currentQuestion].question}</label>
+      <input type="number" id="answer" name="answer">
+      <button onclick="checkAnswer()">Comprobar</button>
+    `;
+  }
+
+  function checkAnswer() {
+    var answer = document.getElementById("answer").value;
+    var correctAnswer = questions[currentQuestion].answer;
+
+    if(answer == correctAnswer) {
+      alert("Â¡Respuesta correcta!");
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        displayQuestion();
+      } else {
+        alert("¡Has completado todas las preguntas FELICIDADES!");
+      }
+    } else {
+      alert("Respuesta incorrecta, intÃ©ntalo de nuevo.");
+    }
+  }
+
+  displayQuestion();
+</script>
+
+</body>
+</html>
